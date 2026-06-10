@@ -1,12 +1,14 @@
 using Sirenix.OdinInspector;
 using Sowtank.Collections.Trees;
+using System;
 using UnityEngine;
 public struct Dialog
 {
     public string Dialogo;
     public string Opcion1;
     public string Opcion2;
-    public Dialog(string value , string op1, string op2)
+
+    public Dialog(string value , string op1, string op2,Action action = null)
     {
         Dialogo = value;
         Opcion1 = op1;
@@ -130,7 +132,7 @@ public class DialogueTreeExample : MonoBehaviour
         //  [Como estas?]          [Quien eres?]
         //      /       \              /       \
         // [Bien!]  [Necesito ayuda] [Mago]  [Adios]
-        var t00 = new BinaryTreeNode<Dialog>(new("Hola aventurero!", "Como estas?" , "Quien eres?"));
+        var t00 = new BinaryTreeNode<Dialog>(new("Hola aventurero!", "Como estas?" , "Quien eres?" , () => Debug.Log("karma positivo")));
 
         var t10 = new BinaryTreeNode<Dialog>(new("Bien gracias por preguntar :D ", " Tienes una cara muy rara >:l ", "Eres una persona muy elegante"));
 
